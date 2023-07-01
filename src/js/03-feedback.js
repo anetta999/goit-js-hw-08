@@ -12,12 +12,14 @@ function handlerFormInput(evt) {
   data[evt.target.name] = evt.target.value;
   //   console.log(data);
 
-  const LSData = localStorage.setItem(LS_KEY, JSON.stringify(data));
-  const savedData = localStorage.getItem(LS_KEY);
-  const parsedSavedData = JSON.parse(savedData);
-  if (LSData) {
-    email.value = parsedSavedData.email;
-    textarea.value = parsedSavedData.message;
+  localStorage.setItem(LS_KEY, JSON.stringify(data));
+
+  const savedData = JSON.parse(localStorage.getItem(LS_KEY));
+  console.log(savedData);
+
+  if (savedData) {
+    email.value = savedData.email;
+    textarea.value = savedData.message;
   }
 }
 
